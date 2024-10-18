@@ -8,7 +8,7 @@ Para crear unha rede en docker teremos que lanzar o comando `docker network crea
 
 # 2-Crea dous contenedores unidos a esa rede
 
-Para crear os dous contenedores teremos que lanzar o comando de creación destos indicando a rede a que se unen, `docker run -itd --network=mi-red-puente contenedor2`. Con este comando crearemos o contenedor na rede que indicamos. Faremos estos o mismo comando para lanzar o outro contenedor.
+Para crear os dous contenedores teremos que lanzar o comando de creación destos indicando a rede a que se unen, `docker run -itd --network=mi-red-puente busybox`. Con este comando crearemos o contenedor na rede que indicamos. Faremos estos o mismo comando para lanzar o outro contenedor.
 
 # 3-Comprobar que os contenedores están na rede
 
@@ -26,12 +26,19 @@ Para listar os contenedores conectados a rede podremos lanzar o comando de antes
 
 # 6-Listar as propiedades da rede 
 
+Para listar as propiedades da nosa rede teremos que volver a lanzar o comando `docker network inspect mi-red-puente`. No despliegue de información que me dará o comando podremos ver as propiedades da rede como no nome, a fecha da creación, o tipo de driver, se ten activada a IPv6 entre outras cousas.
 
 # 7-Crear outra rede
 
+Para crear outra rede lanzaremos o comando de antes pero con outro nome. Neste caso será `docker network create -d bridge red2-redemption`. isto crearanos a rede.
+
 # 8-Lanzar dous contenedores novos conectados a esa nova rede
 
+Para esto repetiremos o do anterior paso de lanzar os contenedores conectadoas a rede co seguinte comando `docker run -itd --network=red2-redemption busybox`. Lanzaremos o comando dúas veces para que lance os dous contenedores.
+
 # 9-Comproba as posibles conexións entre os 4 contenedores
+
+Para comprobar as posibles conexións entraremos dentro dun contenedor e logo faremos ping aos contenedores que temos activos. Cando entremos no contenedor veremos que só nos deixa facer ping aos contenedores que se encotnren na misma rede que este, aos que non se atopen nesa rede saldrá a seguinte mensaxe : *ping: bad address 'clever_herschel'*
 
 # *Docker Compose*
 
