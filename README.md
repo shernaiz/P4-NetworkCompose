@@ -44,6 +44,42 @@ Para comprobar as posibles conexións entraremos dentro dun contenedor e logo fa
 
 # 1-Segue os pasos da guía de iniciación de docker-compose, e explica coas túas palabras os pasos que segues e que fan
 
+Docker Compose  é unha ferramenta que nos permite xestionar aplicacións multi contenedor de forma sinxela. Isto faino mediante un archivo *YAML* que vería sendo como un archivo de configuración onde aparecen especificadaos os servicios volúmenes e redes necesarias para a nosa aplicación.
+
+Ademáis, unha vez feito permítenos controlar mediante un comando a creación e a execución de todos os contenedores que se encontran definidos no archivo YAML.
+
+**PRIMEIROS PASOS**
+
+Para utilizar esta ferramenta o primeiro será ter instalado o docker-compose, neste caso xa temos feito este paso, así que o seguinte sería crear unha carpeta onde meteremos o noso proyecto, e nesta carpeta crearemos algúns arquivos:
+
+**1-** Primeiro crearemos un arquivo chamado `app.py` no que teremos que pegar un código que nos facilitan na propia páxina. 
+
+**2-** O seguinte será un arquivo chamado `requirements.txt`, tamén no directorio do noso proxecto, e tamén teremos que copiar un código que nos proporciona a páxina.
+
+**3-** O seguinte arquivo será `Dockerfile` onde pegaremos tamén outro código, este será o que lle dí a docker certas directrices que debe seguir como lanza a imaxe ou establece o enviroment. este arquivo non terá extensión e en caso de que se cree con extensión podrá darnos error.
+
+**DEFINICIÓN DE SERVIZOS NUN ARQUIVO DOCKER**
+
+Para a definición dos servizos teremos que crear o arquivo `compose.yaml` e teremos tamén que pegar un código que nos proporciona a propia páxina. Este documento o que fará será definir dous servizos, **web** e **redis**. 
+
+O servizo web empregará unha imaxe que se construirá directamente desde o `Dockerfile` que se encontra no propio directorio.
+
+O servizo redis emprega unha imaxe redis pública diréctamente desde o Docker Hub.
+
+**Construir e correr a aplicación con Compose**
+
+Agora que xa temos todo configurado, con un só comando poderiamos crear e comezar todos os servicios que temos no noso arquivo de configuración.
+
+Primeiro teremos que arrancar a aplicación mediante o comando `docker compose up`.
+
+O seguinte será introducir a seguinte dirección no nosos navegador: `http://localhost:8000/`. Isto levarános a unha páxina co texto de _Hola mundo_ e a cantidade de veces que se visitou a páxina. Se refrescamos a páxina o número debería aumentar.
+
+Logo podremos acceder a una ventana do terminal onde poremos o comando `docker image ls` e mostrarános unha lista cas imaxes locales. 
+
+Finalizaremos a aplicación co comando `docker compose down`. E con esto xa teríamos o Docker compose configurado, en caso de querer cambiar algunha cousa só teriamos que cambiar o arquivo de configuración, é decir o `compose.yaml`.
+
 # 2-Agora que sabes algo máis de docker-compose, crear un arquivo (ou varios) de configuración que ó ser lanzados cun docker-compose up, resulten nunha rede docker á que estean conectados 3 contenedores, explica os parámetros do .yaml usado
 
-# 3-Busca e proba 4 parámetros e configuracións diferentes que podes iincluir no arquivo compose, explica qué fan (por exemplo diferentes cousas que facer coa opción RUN).
+
+
+# 3-Busca e proba 4 parámetros e configuracións diferentes que podes incluir no arquivo compose, explica qué fan (por exemplo diferentes cousas que facer coa opción RUN).
