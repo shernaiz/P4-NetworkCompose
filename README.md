@@ -80,6 +80,24 @@ Finalizaremos a aplicación co comando `docker compose down`. E con esto xa ter�
 
 # 2-Agora que sabes algo máis de docker-compose, crear un arquivo (ou varios) de configuración que ó ser lanzados cun docker-compose up, resulten nunha rede docker á que estean conectados 3 contenedores, explica os parámetros do .yaml usado
 
+Para modificar un arquivo `.yaml` e que nos permita lanzar tres contenedores só lanzando o comando `docker compose up` teremos que modificalo para que fose da seguinte forma, dividirémolo en partes:
 
+**Parte 1:** A cabeceira sera o principio do documento, onde teremos que indicar a versión, e a rede e o tipo de rede que empregaremos.
+
+**Parte 2:** A continuación pero de forma anidada teremos que indicar os contenedores por separado, un a continuación do outro. Teremos que indicar os seguintes campos do contenedor: a imaxe, o nome do contenedor, a rede á que conectamos e o porto no que se vai a aloxar.
+
+Cando teñamos todo esto indicado no arquivo podremos lanzar o coamndo e arrincarán os tres contenderoes na rede indicada.
+
+**NOTA**: No documento .yaml só funcionará se separamos do inicio aqueles campos que se atopan dentro de outros. Isto teremos que facelo mediante espacios e non tabulación xa que se nn daranos error.
+
+Se todo esta correcto, ao lanzar `docker compose up` aparecerános a información dos contenedores arrincados e creados así como da rede.
 
 # 3-Busca e proba 4 parámetros e configuracións diferentes que podes incluir no arquivo compose, explica qué fan (por exemplo diferentes cousas que facer coa opción RUN).
+
+**restart:allways** -> En caso de que por alguna circunstacia se detenga un contenedor, este parámetro hará que se reinicie.
+
+**depend on:** -> Este parámetro nos permite que un contendor dependa de otro, haciendo que el dependiente no se iniciará hasta que se inicie el otro.
+
+**helathcheck** -> Este parámetro permitenos corroborar o estado dun servicio de forma periódica. É dicir, este parámetro permitiranos saber se o noso contenedor está correndo de forma correcta.
+
+**expose** -> Este parámetro permitritanos expoñer os portos, isto implicará que os portos só estarán dispoñibles para os servicios vinvulados.
